@@ -1,7 +1,10 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Principal;
 using JwtTut.Models;
 using JwtTut.Services;
 using JwtTut.Utils;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace JwtTut.Controllers
 {
@@ -29,6 +32,28 @@ namespace JwtTut.Controllers
             }
             string token = _jwt.GenerateJSONWebToken(user);
             return Ok(new { Token = token });
+        }
+
+        [HttpPost("validate")]
+        public IActionResult ValidateToken(string token)
+        {
+            try
+            {
+                bool isValid = false;
+
+                isValid = _jwt.ValidateToken(token);
+
+                if (isValid)
+                {
+                    return Ok(new { Status = "valid" });
+                }
+
+                return BadRequest("Invalid");
+            }
+            catch (Exception ex)
+            { }
+
+            return null;
         }
     }
 }

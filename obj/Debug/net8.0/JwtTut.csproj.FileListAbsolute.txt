@@ -38,3 +38,4 @@
 /home/nazmul/Codes/DotNet/WebApi/JwtTut/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/nazmul/Codes/DotNet/WebApi/JwtTut/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /home/nazmul/Codes/DotNet/WebApi/JwtTut/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/home/nazmul/Codes/DotNet/WebApi/JwtTut/obj/Debug/net8.0/JwtTut.sourcelink.json
