@@ -4,6 +4,7 @@ using JwtTut.Models;
 using JwtTut.Services;
 using JwtTut.Utils;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
 
 namespace JwtTut.Controllers
@@ -54,6 +55,22 @@ namespace JwtTut.Controllers
             { }
 
             return null;
+        }
+
+        [HttpGet("SimpleExtract")]
+        public IActionResult SimpleExtract()
+        {
+            string token = null;
+
+            if (Request.Headers.TryGetValue("token", out StringValues userNameValues))
+                token = userNameValues.FirstOrDefault();
+
+            if (token == null)
+                return BadRequest("No Token Found");
+
+            var isValidToken = _jwt.ValidateToken(token);
+
+            return Ok($"Get Request invoked userName:: {isValidToken}");
         }
     }
 }

@@ -22,10 +22,5 @@ namespace JwtTut.Services
 
             return null;
         }
-
-        internal bool GetUser(string token)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
